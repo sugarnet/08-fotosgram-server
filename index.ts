@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
+import cors from 'cors';
 
 import Server from './classes/server';
 import userRoutes from './routes/user.routes';
@@ -14,6 +15,9 @@ server.app.use(bodyParser.json());
 
 // FileUpload
 server.app.use(fileUpload());
+
+// cors
+server.app.use(cors({origin: true, credentials: true}));
 
 // connect db
 mongoose.connect('mongodb://localhost:27017/fotosgram' ,
