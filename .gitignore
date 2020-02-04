@@ -24,8 +24,8 @@ npm-debug.log*
 /.versions
 /.vscode
 /coverage
-dist/*
-!dist/uploads/.gitkeep
+/dist/*
+!/dist/uploads/.gitkeep
 /node_modules
 /platforms
 /plugins
