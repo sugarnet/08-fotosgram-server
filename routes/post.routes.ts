@@ -7,7 +7,7 @@ import FileSystem from '../classes/file-system';
 const postRoutes = Router();
 const fileSystem = new FileSystem();
 
-postRoutes.get('/', [verifyToken], async (request: any, response: Response) => {
+postRoutes.get('/', async (request: any, response: Response) => {
 
     const page = Number(request.query.page) || 1;
     const skip = (page - 1) * 10;
