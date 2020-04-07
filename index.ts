@@ -6,6 +6,7 @@ import cors from 'cors';
 import Server from './classes/server';
 import userRoutes from './routes/user.routes';
 import postRoutes from './routes/post.routes';
+import { json } from 'body-parser';
 
 const server = new Server();
 
@@ -17,7 +18,14 @@ server.app.use(bodyParser.json());
 server.app.use(fileUpload());
 
 // cors
-server.app.use(cors({origin: true, credentials: true}));
+// server.app.use(cors({origin: true, credentials: true}));
+
+server.app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-token");
+    res.header("Access-Control-Allow-Methods", "POST, PUT, GET, DELETE, OPTIONS");
+    next();
+});
 
 // connect db
 mongoose.connect('mongodb://localhost:27017/fotosgram' ,
